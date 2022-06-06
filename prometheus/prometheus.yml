@@ -4,7 +4,8 @@ global:
 
   external_labels:
       monitor: 'docker-host-alpha'
-
+      
+scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 10s
     static_configs:
