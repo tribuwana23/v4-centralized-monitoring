@@ -52,5 +52,5 @@ services:
     image: tribuwana/pushprox:client
     container_name: pushprox-client
     environment:
-      - PROXY_URL=https://monitoring.ops.nodeflux.io
-      - FQDN=192.168.202.80
+      - PROXY_URL=$PROXY
+      - FQDN=$HOST_IP
