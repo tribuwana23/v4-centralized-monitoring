@@ -1,9 +1,5 @@
 version: '2.1'
 
-networks:
-  monitor-net:
-    driver: bridge
-
 volumes:
     prometheus_data: {}
     grafana_data: {}
@@ -16,6 +12,8 @@ services:
     volumes:
       - ./prometheus:/etc/prometheus
       - prometheus_data:/prometheus
+    environment:
+      - PROMETHEUS_COMMON_DISABLE_HTTP2=1
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -25,11 +23,7 @@ services:
       - '--web.enable-lifecycle'
     restart: unless-stopped
     ports:
-      - "9090:9009"
-    networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
+      - 9090:9090
 
   grafana:
     image: grafana/grafana:8.4.5
@@ -37,16 +31,13 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
     restart: unless-stopped
     ports:
-      - "3000:3000"
-    networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
-      
+      - 3000:3000
+
   pushprox-master:
     image: tribuwana/pushprox:master
     container_name: pushprox-master
     ports:
-      - "80:8080"
+      - "88:8080"
