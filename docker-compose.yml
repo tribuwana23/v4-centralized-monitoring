@@ -39,5 +39,6 @@ services:
   pushprox-master:
     image: tribuwana/pushprox:master
     container_name: pushprox-master
+    restart: unless-stopped
     ports:
       - "88:8080"
