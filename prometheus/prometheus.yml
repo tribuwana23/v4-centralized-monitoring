@@ -11,7 +11,7 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: 'visionaire4'
+  - job_name: 'server analitik 1'
     proxy_url: http://localhost:80/
     static_configs:
       - targets: ['localhost:9100','localhost:4004','localhost:9853', 'localhost:8081']
