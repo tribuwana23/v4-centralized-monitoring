@@ -130,7 +130,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(cluster_one_http_response_time_seconds_sum[5m])) by (instance) / sum(rate(cluster_one_http_response_time_seconds_count[5m])) by (instance)",
+          "expr": "sum(rate(nginx_http_response_time_seconds_sum[5m])) by (instance) / sum(rate(nginx_http_response_time_seconds_count[5m])) by (instance)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -231,7 +231,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(cluster_one_http_response_time_seconds_count[1m])) by (instance)",
+          "expr": "sum(rate(nginx_http_response_time_seconds_count[1m])) by (instance)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -324,7 +324,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(cluster_one_http_response_count_total[1m])) by (status)",
+          "expr": "sum(rate(nginx_http_response_count_total[1m])) by (status)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Status Code: {{status}}",
@@ -426,7 +426,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "cluster_one_http_response_time_seconds{quantile=\"0.9\",method=\"POST\",status=~\"2[0-9]*\"}",
+          "expr": "nginx_http_response_time_seconds{quantile=\"0.9\",method=\"POST\",status=~\"2[0-9]*\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "range": true,
@@ -492,7 +492,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
-          "expr": "cluster_one_parse_errors_total",
+          "expr": "nginx_parse_errors_total",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -588,7 +588,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(cluster_one_http_response_size_bytes[5m])) by (instance)",
+          "expr": "sum(rate(nginx_http_response_size_bytes[5m])) by (instance)",
           "format": "time_series",
           "intervalFactor": 1,
           "range": true,
@@ -639,7 +639,7 @@
     ]
   },
   "timezone": "",
-  "title": "Nginx Log Metrics",
+  "title": "DC Kalibata - Log Metrics FRemis-N",
   "uid": "4aBQsjSmz",
   "version": 6,
   "weekStart": ""
