@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 5,
   "links": [],
   "liveNow": true,
   "panels": [
@@ -1778,8 +1778,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -1791,7 +1790,7 @@
             "h": 3,
             "w": 4,
             "x": 0,
-            "y": 2
+            "y": 58
           },
           "id": 47,
           "options": {
@@ -1853,8 +1852,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -1866,7 +1864,7 @@
             "h": 3,
             "w": 2,
             "x": 4,
-            "y": 2
+            "y": 58
           },
           "id": 53,
           "options": {
@@ -1919,8 +1917,7 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "#EAB839",
@@ -1940,7 +1937,7 @@
             "h": 5,
             "w": 3,
             "x": 6,
-            "y": 2
+            "y": 58
           },
           "id": 35,
           "options": {
@@ -1993,8 +1990,7 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "#EAB839",
@@ -2014,7 +2010,7 @@
             "h": 5,
             "w": 3,
             "x": 9,
-            "y": 2
+            "y": 58
           },
           "id": 55,
           "options": {
@@ -2065,8 +2061,7 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "#EAB839",
@@ -2086,7 +2081,7 @@
             "h": 5,
             "w": 3,
             "x": 12,
-            "y": 2
+            "y": 58
           },
           "id": 57,
           "options": {
@@ -2137,8 +2132,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "#EAB839",
@@ -2158,7 +2152,7 @@
             "h": 5,
             "w": 3,
             "x": 15,
-            "y": 2
+            "y": 58
           },
           "id": 41,
           "options": {
@@ -2213,7 +2207,7 @@
             "h": 5,
             "w": 6,
             "x": 18,
-            "y": 2
+            "y": 58
           },
           "hiddenSeries": false,
           "id": 63,
@@ -2325,8 +2319,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -2338,7 +2331,7 @@
             "h": 2,
             "w": 3,
             "x": 0,
-            "y": 5
+            "y": 61
           },
           "id": 45,
           "options": {
@@ -2391,8 +2384,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -2404,7 +2396,7 @@
             "h": 2,
             "w": 3,
             "x": 3,
-            "y": 5
+            "y": 61
           },
           "id": 51,
           "options": {
@@ -2469,8 +2461,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -2482,7 +2473,7 @@
             "h": 5,
             "w": 6,
             "x": 0,
-            "y": 7
+            "y": 63
           },
           "id": 49,
           "links": [],
@@ -2609,8 +2600,7 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "#EAB839",
@@ -2630,7 +2620,7 @@
             "h": 5,
             "w": 3,
             "x": 6,
-            "y": 7
+            "y": 63
           },
           "id": 59,
           "options": {
@@ -2681,8 +2671,7 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "#EAB839",
@@ -2702,7 +2691,7 @@
             "h": 5,
             "w": 3,
             "x": 9,
-            "y": 7
+            "y": 63
           },
           "id": 61,
           "options": {
@@ -2753,8 +2742,7 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "#EAB839",
@@ -2774,7 +2762,7 @@
             "h": 5,
             "w": 3,
             "x": 12,
-            "y": 7
+            "y": 63
           },
           "id": 87,
           "options": {
@@ -2825,8 +2813,7 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "#EAB839",
@@ -2846,7 +2833,7 @@
             "h": 5,
             "w": 3,
             "x": 15,
-            "y": 7
+            "y": 63
           },
           "id": 67,
           "options": {
@@ -2901,7 +2888,7 @@
             "h": 5,
             "w": 6,
             "x": 18,
-            "y": 7
+            "y": 63
           },
           "hiddenSeries": false,
           "id": 65,
@@ -3018,7 +3005,7 @@
             "h": 5,
             "w": 6,
             "x": 0,
-            "y": 12
+            "y": 68
           },
           "hiddenSeries": false,
           "id": 69,
@@ -3115,7 +3102,7 @@
             "h": 5,
             "w": 6,
             "x": 6,
-            "y": 12
+            "y": 68
           },
           "hiddenSeries": false,
           "id": 71,
@@ -3232,7 +3219,7 @@
             "h": 5,
             "w": 6,
             "x": 12,
-            "y": 12
+            "y": 68
           },
           "hiddenSeries": false,
           "id": 73,
@@ -3328,7 +3315,7 @@
             "h": 5,
             "w": 6,
             "x": 18,
-            "y": 12
+            "y": 68
           },
           "hiddenSeries": false,
           "id": 75,
@@ -3444,7 +3431,7 @@
             "h": 5,
             "w": 6,
             "x": 0,
-            "y": 17
+            "y": 73
           },
           "hiddenSeries": false,
           "id": 77,
@@ -3541,7 +3528,7 @@
             "h": 5,
             "w": 6,
             "x": 6,
-            "y": 17
+            "y": 73
           },
           "hiddenSeries": false,
           "id": 79,
@@ -3638,7 +3625,7 @@
             "h": 5,
             "w": 6,
             "x": 12,
-            "y": 17
+            "y": 73
           },
           "hiddenSeries": false,
           "id": 81,
@@ -3735,7 +3722,7 @@
             "h": 5,
             "w": 6,
             "x": 18,
-            "y": 17
+            "y": 73
           },
           "hiddenSeries": false,
           "id": 83,
@@ -3863,8 +3850,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3880,7 +3866,7 @@
             "h": 5,
             "w": 3,
             "x": 0,
-            "y": 3
+            "y": 59
           },
           "id": 141,
           "links": [],
@@ -3956,7 +3942,7 @@
             "h": 5,
             "w": 21,
             "x": 3,
-            "y": 3
+            "y": 59
           },
           "hiddenSeries": false,
           "id": 127,
@@ -4050,7 +4036,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 8
+            "y": 64
           },
           "hiddenSeries": false,
           "id": 129,
@@ -4144,7 +4130,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 8
+            "y": 64
           },
           "hiddenSeries": false,
           "id": 131,
@@ -4236,7 +4222,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 16
+            "y": 72
           },
           "hiddenSeries": false,
           "id": 133,
@@ -4332,7 +4318,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 16
+            "y": 72
           },
           "hiddenSeries": false,
           "id": 135,
@@ -6492,6 +6478,642 @@
       ],
       "title": "Visionaire4",
       "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 4
+      },
+      "id": 155,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 5
+          },
+          "hiddenSeries": false,
+          "id": 143,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "9.3.0",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": true,
+              "expr": "latency_face_recognition{job=\"$job\"}",
+              "interval": "",
+              "legendFormat": "{{quantile}}",
+              "range": true,
+              "refId": "latency face recognition"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "expr": "avg(latency_face_extraction{job=\"$job\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "range": true,
+              "refId": "latency  face extraction"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": true,
+              "expr": "avg(latency_face_id_search{job=\"$job\"})+avg(latency_face_extraction{job=\"$job\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "range": true,
+              "refId": "face ID search + extraction"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "Latency Face Recognition",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:405",
+              "format": "ms",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:406",
+              "format": "ms",
+              "logBase": 1,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "description": "",
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 5
+          },
+          "hiddenSeries": false,
+          "id": 145,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "9.3.0",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": true,
+              "expr": "latency_face_extraction{job=\"$job\"}",
+              "interval": "",
+              "legendFormat": "{{quantile}}",
+              "range": true,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": true,
+              "expr": "avg(latency_face_extraction{job=\"$job\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "range": true,
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": true,
+              "expr": "min(latency_face_extraction{job=\"$job\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "range": true,
+              "refId": "C"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "Latency Face Extraction",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:513",
+              "format": "ms",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:514",
+              "format": "short",
+              "logBase": 1,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 7,
+            "x": 16,
+            "y": 5
+          },
+          "hiddenSeries": false,
+          "id": 147,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "9.3.0",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "expr": "latency_face_id_search{job=\"$job\"}",
+              "interval": "",
+              "legendFormat": "",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "Latency Face ID search",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:808",
+              "format": "ms",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:809",
+              "format": "ms",
+              "logBase": 1,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "description": "Including:\n- Face Detection Inference\n- Sort faces from the largest",
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 0,
+            "y": 13
+          },
+          "hiddenSeries": false,
+          "id": 149,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "9.3.0",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": true,
+              "expr": "latency_face_detection{job=\"$job\"}",
+              "interval": "",
+              "legendFormat": "{{quantile}}",
+              "range": true,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": true,
+              "expr": "avg(latency_face_detection{job=\"$job\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "range": true,
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": true,
+              "expr": "min(latency_face_detection{job=\"$job\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "range": true,
+              "refId": "C"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "Latency Face Detection",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:513",
+              "format": "ms",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:514",
+              "format": "short",
+              "logBase": 1,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 8,
+            "y": 13
+          },
+          "hiddenSeries": false,
+          "id": 151,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "9.3.0",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "expr": "latency_create_enrollment{job=\"$job\"}",
+              "interval": "",
+              "legendFormat": "",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "Latency Create Enrollment",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1206",
+              "format": "ms",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1207",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 9,
+            "w": 7,
+            "x": 16,
+            "y": 13
+          },
+          "hiddenSeries": false,
+          "id": 153,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "9.3.0",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "expr": "queue_face{job=\"$job\"}",
+              "interval": "",
+              "legendFormat": "",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "Face Queue",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:69",
+              "format": "none",
+              "logBase": 1,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:70",
+              "format": "short",
+              "logBase": 1,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        }
+      ],
+      "title": "Fremis-N",
+      "type": "row"
     }
   ],
   "refresh": "10s",
@@ -6502,7 +7124,7 @@
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "server LB",
           "value": "server LB"
         },
@@ -6516,9 +7138,24 @@
             "selected": true,
             "text": "server LB",
             "value": "server LB"
+          },
+          {
+            "selected": false,
+            "text": "server analitik 1",
+            "value": "server analitik 1"
+          },
+          {
+            "selected": false,
+            "text": "server analitik 2",
+            "value": "server analitik 2"
+          },
+          {
+            "selected": false,
+            "text": "server storage",
+            "value": "server storage"
           }
         ],
-        "query": "server LB",
+        "query": "server LB, server analitik 1, server analitik 2, server storage",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -6670,8 +7307,8 @@
     ]
   },
   "timezone": "",
-  "title": "Visionaire 4 centralized monitoring",
+  "title": "fremisn centralized monitoring",
   "uid": "-GV0BihGk-v4-cent",
-  "version": 2,
+  "version": 4,
   "weekStart": ""
 }
