@@ -1,4 +1,14 @@
 {
+    "__inputs": [
+        {
+          "name": "DS_PROMETHEUS",
+          "label": "prometheus",
+          "description": "",
+          "type": "datasource",
+          "pluginId": "prometheus",
+          "pluginName": "Prometheus"
+        }
+      ],
     "annotations": {
       "list": [
         {
@@ -7279,7 +7289,7 @@
       ]
     },
     "timezone": "",
-    "title": "fremisn centralized monitoring",
+    "title": "v4 & fremisN centralized monitoring",
     "uid": "-GV0BihGk-v4-cent",
     "version": 2,
     "weekStart": ""
