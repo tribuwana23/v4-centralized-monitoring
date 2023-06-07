@@ -24,13 +24,16 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 5,
-  "iteration": 1652151677417,
+  "id": 4,
   "links": [],
-  "liveNow": false,
+  "liveNow": true,
   "panels": [
     {
       "collapsed": true,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "nemsEc_4k"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -40,6 +43,10 @@
       "id": 111,
       "panels": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Busy state of all CPU cores together",
           "fieldConfig": {
             "defaults": {
@@ -63,7 +70,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -86,30 +94,6 @@
             "y": 1
           },
           "id": 89,
-          "libraryPanel": {
-            "description": "Busy state of all CPU cores together",
-            "meta": {
-              "connectedDashboards": 1,
-              "created": "2022-05-10T00:50:51Z",
-              "createdBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              },
-              "folderName": "node-exporter",
-              "folderUid": "WRU5o8l7k",
-              "updated": "2022-05-10T01:09:35Z",
-              "updatedBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              }
-            },
-            "name": "CPU Busy",
-            "type": "gauge",
-            "uid": "QgKpoU_7k",
-            "version": 2
-          },
           "links": [],
           "options": {
             "orientation": "horizontal",
@@ -123,12 +107,12 @@
             "showThresholdLabels": false,
             "showThresholdMarkers": true
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "(((count(count(node_cpu_seconds_total{job=\"$job\"}) by (cpu))) - avg(sum by (mode)(rate(node_cpu_seconds_total{mode='idle',job=\"$job\"}[$__rate_interval])))) * 100) / count(count(node_cpu_seconds_total{job=\"$job\"}) by (cpu))",
@@ -144,6 +128,10 @@
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Busy state of all CPU cores together (15 min average)",
           "fieldConfig": {
             "defaults": {
@@ -167,7 +155,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -190,30 +179,6 @@
             "y": 1
           },
           "id": 91,
-          "libraryPanel": {
-            "description": "Busy state of all CPU cores together (15 min average)",
-            "meta": {
-              "connectedDashboards": 1,
-              "created": "2022-05-10T00:51:03Z",
-              "createdBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              },
-              "folderName": "node-exporter",
-              "folderUid": "WRU5o8l7k",
-              "updated": "2022-05-10T01:10:02Z",
-              "updatedBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              }
-            },
-            "name": "Sys Load (15m avg)",
-            "type": "gauge",
-            "uid": "K3PpT8l7z",
-            "version": 2
-          },
           "links": [],
           "options": {
             "orientation": "horizontal",
@@ -227,15 +192,15 @@
             "showThresholdLabels": false,
             "showThresholdMarkers": true
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
-              "expr": "avg(node_load15{job=\"$job\"}) /  count(count(node_cpu_seconds_total{job=\"$job\"}) by (cpu)) * 100",
+              "expr": "avg without (mode,cpu) (\n  1 - rate(node_cpu_seconds_total{mode=\"idle\",job=\"$job\"}[1m])\n) * 100",
               "hide": false,
               "interval": "",
               "intervalFactor": 1,
@@ -248,6 +213,10 @@
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Non available RAM memory",
           "fieldConfig": {
             "defaults": {
@@ -262,7 +231,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -286,30 +256,6 @@
           },
           "hideTimeOverride": false,
           "id": 95,
-          "libraryPanel": {
-            "description": "Non available RAM memory",
-            "meta": {
-              "connectedDashboards": 1,
-              "created": "2022-05-10T00:51:10Z",
-              "createdBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              },
-              "folderName": "node-exporter",
-              "folderUid": "WRU5o8l7k",
-              "updated": "2022-05-10T01:11:10Z",
-              "updatedBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              }
-            },
-            "name": "RAM Used",
-            "type": "gauge",
-            "uid": "sYCpTU_7k",
-            "version": 2
-          },
           "links": [],
           "options": {
             "orientation": "horizontal",
@@ -323,12 +269,12 @@
             "showThresholdLabels": false,
             "showThresholdMarkers": true
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "((node_memory_MemTotal_bytes{job=\"$job\"} - node_memory_MemFree_bytes{job=\"$job\"}) / (node_memory_MemTotal_bytes{job=\"$job\"} )) * 100",
@@ -343,7 +289,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "100 - ((node_memory_MemAvailable_bytes{job=\"$job\"} * 100) / node_memory_MemTotal_bytes{job=\"$job\"})",
@@ -360,6 +306,10 @@
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Used Swap",
           "fieldConfig": {
             "defaults": {
@@ -383,7 +333,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -406,30 +357,6 @@
             "y": 1
           },
           "id": 97,
-          "libraryPanel": {
-            "description": "Used Swap",
-            "meta": {
-              "connectedDashboards": 1,
-              "created": "2022-05-10T00:51:16Z",
-              "createdBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              },
-              "folderName": "node-exporter",
-              "folderUid": "WRU5o8l7k",
-              "updated": "2022-05-10T01:11:32Z",
-              "updatedBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              }
-            },
-            "name": "SWAP Used",
-            "type": "gauge",
-            "uid": "xEWho8_nk",
-            "version": 2
-          },
           "links": [],
           "options": {
             "orientation": "horizontal",
@@ -443,12 +370,12 @@
             "showThresholdLabels": false,
             "showThresholdMarkers": true
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "((node_memory_SwapTotal_bytes{job=\"$job\"} - node_memory_SwapFree_bytes{job=\"$job\"}) / (node_memory_SwapTotal_bytes{job=\"$job\"} )) * 100",
@@ -463,6 +390,10 @@
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Root FS Used",
           "fieldConfig": {
             "defaults": {
@@ -486,7 +417,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -509,30 +441,6 @@
             "y": 1
           },
           "id": 99,
-          "libraryPanel": {
-            "description": "Root FS Used",
-            "meta": {
-              "connectedDashboards": 1,
-              "created": "2022-05-10T00:51:23Z",
-              "createdBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              },
-              "folderName": "node-exporter",
-              "folderUid": "WRU5o8l7k",
-              "updated": "2022-05-10T01:15:15Z",
-              "updatedBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              }
-            },
-            "name": "Root FS Used",
-            "type": "gauge",
-            "uid": "EevhTUlnz",
-            "version": 6
-          },
           "links": [],
           "options": {
             "orientation": "horizontal",
@@ -546,12 +454,12 @@
             "showThresholdLabels": false,
             "showThresholdMarkers": true
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "100 - ((node_filesystem_avail_bytes{job=\"$job\",mountpoint=\"/\",fstype!=\"rootfs\"} * 100) / node_filesystem_size_bytes{job=\"$job\",mountpoint=\"/\",fstype!=\"rootfs\"})",
@@ -567,6 +475,10 @@
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "/data partition Used",
           "fieldConfig": {
             "defaults": {
@@ -590,7 +502,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -626,15 +539,15 @@
             "showThresholdLabels": false,
             "showThresholdMarkers": true
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
-              "expr": "100 - ((node_filesystem_avail_bytes{job=\"$job\",mountpoint=\"/data\",fstype!=\"rootfs\"} * 100) / node_filesystem_size_bytes{job=\"$job\",mountpoint=\"/\",fstype!=\"rootfs\"})",
+              "expr": "100 - ((node_filesystem_avail_bytes{job=\"$job\",mountpoint=\"/data\",fstype!=\"rootfs\"} * 100) / node_filesystem_size_bytes{job=\"$job\",mountpoint=\"/data\",fstype!=\"rootfs\"})",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -647,6 +560,10 @@
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Total number of CPU cores",
           "fieldConfig": {
             "defaults": {
@@ -668,7 +585,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -687,30 +605,6 @@
             "y": 1
           },
           "id": 101,
-          "libraryPanel": {
-            "description": "Total number of CPU cores",
-            "meta": {
-              "connectedDashboards": 1,
-              "created": "2022-05-10T00:51:28Z",
-              "createdBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              },
-              "folderName": "node-exporter",
-              "folderUid": "WRU5o8l7k",
-              "updated": "2022-05-10T01:25:04Z",
-              "updatedBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              }
-            },
-            "name": "CPU Cores",
-            "type": "stat",
-            "uid": "bAoho8lnz",
-            "version": 2
-          },
           "links": [],
           "maxDataPoints": 100,
           "options": {
@@ -727,12 +621,12 @@
             },
             "textMode": "auto"
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "count(count(node_cpu_seconds_total{job=\"$job\"}) by (cpu))",
@@ -747,6 +641,10 @@
           "type": "stat"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Total RAM",
           "fieldConfig": {
             "defaults": {
@@ -769,7 +667,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -788,30 +687,6 @@
             "y": 1
           },
           "id": 107,
-          "libraryPanel": {
-            "description": "Total RAM",
-            "meta": {
-              "connectedDashboards": 1,
-              "created": "2022-05-10T00:51:45Z",
-              "createdBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              },
-              "folderName": "node-exporter",
-              "folderUid": "WRU5o8l7k",
-              "updated": "2022-05-10T01:25:39Z",
-              "updatedBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              }
-            },
-            "name": "RAM Total",
-            "type": "stat",
-            "uid": "oeehT8l7z",
-            "version": 2
-          },
           "links": [],
           "maxDataPoints": 100,
           "options": {
@@ -828,12 +703,12 @@
             },
             "textMode": "auto"
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "node_memory_MemTotal_bytes{job=\"$job\"}",
@@ -848,6 +723,10 @@
           "type": "stat"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Total SWAP",
           "fieldConfig": {
             "defaults": {
@@ -870,7 +749,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -889,30 +769,6 @@
             "y": 1
           },
           "id": 109,
-          "libraryPanel": {
-            "description": "Total SWAP",
-            "meta": {
-              "connectedDashboards": 1,
-              "created": "2022-05-10T00:51:55Z",
-              "createdBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              },
-              "folderName": "node-exporter",
-              "folderUid": "WRU5o8l7k",
-              "updated": "2022-05-10T01:26:13Z",
-              "updatedBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              }
-            },
-            "name": "SWAP Total",
-            "type": "stat",
-            "uid": "83vTTUlnz",
-            "version": 2
-          },
           "links": [],
           "maxDataPoints": 100,
           "options": {
@@ -929,12 +785,12 @@
             },
             "textMode": "auto"
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "node_memory_SwapTotal_bytes{job=\"$job\"}",
@@ -949,6 +805,10 @@
           "type": "stat"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Total RootFS",
           "fieldConfig": {
             "defaults": {
@@ -971,7 +831,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -994,30 +855,6 @@
             "y": 3
           },
           "id": 105,
-          "libraryPanel": {
-            "description": "Total RootFS",
-            "meta": {
-              "connectedDashboards": 1,
-              "created": "2022-05-10T00:51:34Z",
-              "createdBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              },
-              "folderName": "node-exporter",
-              "folderUid": "WRU5o8l7k",
-              "updated": "2022-05-10T01:25:14Z",
-              "updatedBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              }
-            },
-            "name": "RootFS Total",
-            "type": "stat",
-            "uid": "BQB2TU_nk",
-            "version": 2
-          },
           "links": [],
           "maxDataPoints": 100,
           "options": {
@@ -1034,12 +871,12 @@
             },
             "textMode": "auto"
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "node_filesystem_size_bytes{job=\"$job\",mountpoint=\"/\",fstype!=\"rootfs\"}",
@@ -1056,6 +893,10 @@
           "type": "stat"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "/datav Total",
           "fieldConfig": {
             "defaults": {
@@ -1078,7 +919,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(50, 172, 45, 0.97)"
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -1117,12 +959,12 @@
             },
             "textMode": "auto"
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "node_filesystem_size_bytes{job=\"$job\",mountpoint=\"/data\",fstype!=\"rootfs\"}",
@@ -1139,6 +981,10 @@
           "type": "stat"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "System uptime",
           "fieldConfig": {
             "defaults": {
@@ -1161,7 +1007,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -1197,12 +1044,12 @@
             },
             "textMode": "auto"
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "node_time_seconds{job=\"$job\"} - node_boot_time_seconds{job=\"$job\"}",
@@ -1236,6 +1083,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "decimals": 2,
           "description": "Basic CPU info",
           "fieldConfig": {
@@ -1275,7 +1126,7 @@
             "alertThreshold": true
           },
           "percentage": true,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1308,7 +1159,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum by (instance)(rate(node_cpu_seconds_total{mode=\"system\",job=\"$job\"}[$__rate_interval])) * 100",
@@ -1323,7 +1174,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum by (instance)(rate(node_cpu_seconds_total{mode='user',job=\"$job\"}[$__rate_interval])) * 100",
@@ -1338,7 +1189,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum by (instance)(rate(node_cpu_seconds_total{mode='iowait',job=\"$job\"}[$__rate_interval])) * 100",
@@ -1352,7 +1203,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum by (instance)(rate(node_cpu_seconds_total{mode=~\".*irq\",job=\"$job\"}[$__rate_interval])) * 100",
@@ -1366,7 +1217,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum (rate(node_cpu_seconds_total{mode!='idle',mode!='user',mode!='system',mode!='iowait',mode!='irq',mode!='softirq',job=\"$job\"}[$__rate_interval])) * 100",
@@ -1380,7 +1231,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum by (mode)(rate(node_cpu_seconds_total{mode='idle',job=\"$job\"}[$__rate_interval])) * 100",
@@ -1452,6 +1303,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "decimals": 2,
           "description": "Basic memory usage",
           "fieldConfig": {
@@ -1491,7 +1346,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1524,7 +1379,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "node_memory_MemTotal_bytes{job=\"$job\"}",
@@ -1539,7 +1394,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "node_memory_MemTotal_bytes{job=\"$job\"} - node_memory_MemFree_bytes{job=\"$job\"} - (node_memory_Cached_bytes{job=\"$job\"} + node_memory_Buffers_bytes{job=\"$job\"})",
@@ -1554,7 +1409,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "node_memory_Cached_bytes{job=\"$job\"} + node_memory_Buffers_bytes{job=\"$job\"}",
@@ -1568,7 +1423,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "node_memory_MemFree_bytes{job=\"$job\"}",
@@ -1582,7 +1437,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "(node_memory_SwapTotal_bytes{job=\"$job\"} - node_memory_SwapFree_bytes{job=\"$job\"})",
@@ -1655,6 +1510,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Basic network info per interface",
           "fieldConfig": {
             "defaults": {
@@ -1695,7 +1554,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1712,7 +1571,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "rate(node_network_receive_bytes_total{job=\"$job\"}[$__rate_interval])*8",
@@ -1726,7 +1585,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "rate(node_network_transmit_bytes_total{job=\"$job\"}[$__rate_interval])*8",
@@ -1774,6 +1633,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "decimals": 3,
           "description": "Disk space used of all filesystems mounted",
           "fieldConfig": {
@@ -1815,7 +1678,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1827,7 +1690,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "100 - ((node_filesystem_avail_bytes{job=\"$job\",device!~'rootfs'} * 100) / node_filesystem_size_bytes{job=\"$job\",device!~'rootfs'})",
@@ -1872,11 +1735,24 @@
           }
         }
       ],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "CPU/Mem/Disk",
       "type": "row"
     },
     {
       "collapsed": true,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "nemsEc_4k"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1886,6 +1762,10 @@
       "id": 85,
       "panels": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "The official product name of the GPU. This is an alphanumeric string. For all products.",
           "fieldConfig": {
             "defaults": {
@@ -1898,7 +1778,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   }
                 ]
               },
@@ -1928,12 +1809,12 @@
             "text": {},
             "textMode": "name"
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": false,
               "expr": "nvidia_smi_gpu_info{job=\"$job\", uuid=\"$gpu\"}",
@@ -1947,6 +1828,10 @@
           "type": "stat"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "The current performance state for the GPU. States range from P0 (maximum performance) to P12 (minimum performance).",
           "fieldConfig": {
             "defaults": {
@@ -1968,7 +1853,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   }
                 ]
               },
@@ -1998,12 +1884,12 @@
             "text": {},
             "textMode": "value"
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_pstate{job=\"$job\", uuid=\"$gpu\"}",
@@ -2016,6 +1902,10 @@
           "type": "stat"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Percent of time over the past sample period during which one or more kernels was executing on the GPU.\nThe sample period may be between 1 second and 1/6 second depending on the product.",
           "fieldConfig": {
             "defaults": {
@@ -2029,7 +1919,8 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "#EAB839",
@@ -2065,15 +1956,16 @@
             "showThresholdMarkers": true,
             "text": {}
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_utilization_gpu_ratio{ job=\"$job\", uuid=\"$gpu\"}",
+              "instant": false,
               "interval": "",
               "legendFormat": "{{uuid}}",
               "refId": "A"
@@ -2084,6 +1976,10 @@
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "The last measured power draw for the entire board, in watts. Only available if power management is supported. This reading is accurate to within +/- 5 watts / The software power limit in watts.",
           "fieldConfig": {
             "defaults": {
@@ -2097,7 +1993,8 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "#EAB839",
@@ -2133,12 +2030,12 @@
             "showThresholdMarkers": true,
             "text": {}
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_power_draw_watts{job=\"$job\", uuid=\"$gpu\"} / nvidia_smi_power_default_limit_watts{job=\"$job\", uuid=\"$gpu\"}",
@@ -2151,6 +2048,10 @@
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "The fan speed value is the percent of the product's maximum noise tolerance fan speed that the device's fan is currently intended to run at. This value may exceed 100% in certain cases. Note: The reported speed is the intended fan speed. If the fan is physically blocked and unable to spin, this output will not match the actual fan speed. Many parts do not report fan speeds because they rely on cooling via fans in the surrounding enclosure.\n",
           "fieldConfig": {
             "defaults": {
@@ -2164,7 +2065,8 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "#EAB839",
@@ -2200,12 +2102,12 @@
             "showThresholdMarkers": true,
             "text": {}
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_fan_speed_ratio{job=\"$job\", uuid=\"$gpu\"}",
@@ -2218,6 +2120,10 @@
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Core GPU temperature. in degrees C.",
           "fieldConfig": {
             "defaults": {
@@ -2231,7 +2137,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "#EAB839",
@@ -2267,12 +2174,12 @@
             "showThresholdMarkers": true,
             "text": {}
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_temperature_gpu{job=\"$job\", uuid=\"$gpu\"}",
@@ -2289,6 +2196,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Percent of time over the past sample period during which global (device) memory was being read or written.\nThe sample period may be between 1 second and 1/6 second depending on the product.",
           "fieldConfig": {
             "defaults": {
@@ -2322,7 +2233,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -2334,7 +2245,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_utilization_memory_ratio{job=\"$job\", uuid=\"$gpu\"}",
@@ -2398,6 +2309,10 @@
           }
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "The version of the installed NVIDIA display driver. This is an alphanumeric string.",
           "fieldConfig": {
             "defaults": {
@@ -2410,7 +2325,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   }
                 ]
               },
@@ -2440,12 +2356,12 @@
             "text": {},
             "textMode": "name"
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": false,
               "expr": "nvidia_smi_gpu_info{job=\"$job\", uuid=\"$gpu\"}",
@@ -2459,6 +2375,10 @@
           "type": "stat"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "The BIOS of the GPU board.",
           "fieldConfig": {
             "defaults": {
@@ -2471,7 +2391,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   }
                 ]
               },
@@ -2501,12 +2422,12 @@
             "text": {},
             "textMode": "name"
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": false,
               "expr": "nvidia_smi_gpu_info{job=\"$job\", uuid=\"$gpu\"}",
@@ -2520,6 +2441,10 @@
           "type": "stat"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Information about factors that are reducing the frequency of clocks. If all throttle reasons are returned as \"Not Active\" it means that clocks are running as high as possible.",
           "fieldConfig": {
             "defaults": {
@@ -2544,7 +2469,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   }
                 ]
               },
@@ -2562,6 +2488,8 @@
           "links": [],
           "options": {
             "displayMode": "gradient",
+            "minVizHeight": 10,
+            "minVizWidth": 0,
             "orientation": "horizontal",
             "reduceOptions": {
               "calcs": [
@@ -2573,12 +2501,12 @@
             "showUnfilled": true,
             "text": {}
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_clocks_throttle_reasons_gpu_idle{job=\"$job\", uuid=\"$gpu\"}",
@@ -2590,7 +2518,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_clocks_throttle_reasons_hw_thermal_slowdown{job=\"$job\", uuid=\"$gpu\"}",
@@ -2602,7 +2530,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_clocks_throttle_reasons_sw_power_cap{job=\"$job\", uuid=\"$gpu\"}",
@@ -2614,7 +2542,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_clocks_throttle_reasons_applications_clocks_setting{job=\"$job\", uuid=\"$gpu\"}",
@@ -2626,7 +2554,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_clocks_throttle_reasons_hw_power_brake_slowdown{job=\"$job\", uuid=\"$gpu\"}",
@@ -2638,7 +2566,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_clocks_throttle_reasons_sw_thermal_slowdown{job=\"$job\", uuid=\"$gpu\"}",
@@ -2650,7 +2578,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_clocks_throttle_reasons_sync_boost{job=\"$job\", uuid=\"$gpu\"}",
@@ -2664,6 +2592,10 @@
           "type": "bargauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Current frequency of graphics (shader) clock\n/\nMaximum frequency of graphics (shader) clock.\n",
           "fieldConfig": {
             "defaults": {
@@ -2677,7 +2609,8 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "#EAB839",
@@ -2713,12 +2646,12 @@
             "showThresholdMarkers": true,
             "text": {}
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_clocks_current_graphics_clock_hz{job=\"$job\", uuid=\"$gpu\"} / nvidia_smi_clocks_max_graphics_clock_hz{job=\"$job\", uuid=\"$gpu\"}",
@@ -2731,6 +2664,10 @@
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Current frequency of memory clock / Maximum frequency of memory clock",
           "fieldConfig": {
             "defaults": {
@@ -2744,7 +2681,8 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "#EAB839",
@@ -2767,30 +2705,6 @@
             "y": 7
           },
           "id": 61,
-          "libraryPanel": {
-            "description": "Current frequency of memory clock / Maximum frequency of memory clock",
-            "meta": {
-              "connectedDashboards": 1,
-              "created": "2022-05-09T04:34:53Z",
-              "createdBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              },
-              "folderName": "General",
-              "folderUid": "",
-              "updated": "2022-05-09T05:55:26Z",
-              "updatedBy": {
-                "avatarUrl": "/avatar/46d229b033af06a191ff2267bca9ae56",
-                "id": 1,
-                "name": "admin"
-              }
-            },
-            "name": "Memory Clock Speed %",
-            "type": "gauge",
-            "uid": "OvXlvE_nk",
-            "version": 3
-          },
           "options": {
             "orientation": "auto",
             "reduceOptions": {
@@ -2804,15 +2718,15 @@
             "showThresholdMarkers": true,
             "text": {}
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
-              "expr": "nvidia_smi_clocks_current_memory_clock_hz{job=\"$job\"} / nvidia_smi_clocks_max_memory_clock_hz{job=\"$job\"}",
+              "expr": "nvidia_smi_clocks_current_memory_clock_hz{job=\"$job\", uuid=\"$gpu\"} / nvidia_smi_clocks_max_memory_clock_hz{job=\"$job\", uuid=\"$gpu\"}",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -2822,6 +2736,10 @@
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Total memory allocated by active contexts / Total installed GPU memory.",
           "fieldConfig": {
             "defaults": {
@@ -2835,7 +2753,8 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "#EAB839",
@@ -2871,12 +2790,12 @@
             "showThresholdMarkers": true,
             "text": {}
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_memory_used_bytes{job=\"$job\", uuid=\"$gpu\"} / nvidia_smi_memory_total_bytes{job=\"$job\", uuid=\"$gpu\"}",
@@ -2889,6 +2808,10 @@
           "type": "gauge"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Percent of time over the past sample period during which global (device) memory was being read or written.\nThe sample period may be between 1 second and 1/6 second depending on the product.",
           "fieldConfig": {
             "defaults": {
@@ -2902,7 +2825,8 @@
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "#EAB839",
@@ -2938,12 +2862,12 @@
             "showThresholdMarkers": true,
             "text": {}
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_utilization_memory_ratio{job=\"$job\", uuid=\"$gpu\"}",
@@ -2960,6 +2884,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Percent of time over the past sample period during which one or more kernels was executing on the GPU.\nThe sample period may be between 1 second and 1/6 second depending on the product.",
           "fieldConfig": {
             "defaults": {
@@ -2993,7 +2921,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -3005,7 +2933,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_utilization_gpu_ratio{job=\"$job\", uuid=\"$gpu\"}",
@@ -3073,6 +3001,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Total memory allocated by active contexts.",
           "fieldConfig": {
             "defaults": {
@@ -3106,7 +3038,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -3118,7 +3050,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_memory_used_bytes{job=\"$job\", uuid=\"$gpu\"}",
@@ -3166,6 +3098,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Core GPU temperature. in degrees C.",
           "fieldConfig": {
             "defaults": {
@@ -3199,7 +3135,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -3211,7 +3147,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_temperature_gpu{job=\"$job\", uuid=\"$gpu\"}",
@@ -3279,6 +3215,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "The last measured power draw for the entire board, in watts. Only available if power management is supported. This reading is accurate to within +/- 5 watts",
           "fieldConfig": {
             "defaults": {
@@ -3312,7 +3252,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -3324,7 +3264,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_power_draw_watts{job=\"$job\", uuid=\"$gpu\"}",
@@ -3371,6 +3311,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "The fan speed value is the percent of the product's maximum noise tolerance fan speed that the device's fan is currently intended to run at. This value may exceed 100% in certain cases. Note: The reported speed is the intended fan speed. If the fan is physically blocked and unable to spin, this output will not match the actual fan speed. Many parts do not report fan speeds because they rely on cooling via fans in the surrounding enclosure.\n",
           "fieldConfig": {
             "defaults": {
@@ -3404,7 +3348,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -3416,7 +3360,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_fan_speed_ratio{job=\"$job\", uuid=\"$gpu\"}",
@@ -3483,6 +3427,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Current frequency of graphics (shader) clock.",
           "fieldConfig": {
             "defaults": {
@@ -3516,7 +3464,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -3528,7 +3476,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_clocks_current_graphics_clock_hz{job=\"$job\", uuid=\"$gpu\"}",
@@ -3576,6 +3524,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Current frequency of video encoder/decoder clock.",
           "fieldConfig": {
             "defaults": {
@@ -3609,7 +3561,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -3621,7 +3573,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_clocks_current_video_clock_hz{job=\"$job\", uuid=\"$gpu\"}",
@@ -3669,6 +3621,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Current frequency of SM (Streaming Multiprocessor) clock.",
           "fieldConfig": {
             "defaults": {
@@ -3702,7 +3658,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -3714,7 +3670,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_clocks_current_sm_clock_hz{job=\"$job\", uuid=\"$gpu\"}",
@@ -3762,6 +3718,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "Current frequency of memory clock.",
           "fieldConfig": {
             "defaults": {
@@ -3795,7 +3755,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -3807,7 +3767,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "nvidia_smi_clocks_current_memory_clock_hz{job=\"$job\", uuid=\"$gpu\"}",
@@ -3851,11 +3811,24 @@
           }
         }
       ],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "GPU",
       "type": "row"
     },
     {
       "collapsed": true,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "nemsEc_4k"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3865,6 +3838,10 @@
       "id": 139,
       "panels": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -3886,7 +3863,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -3921,7 +3899,7 @@
             },
             "textMode": "auto"
           },
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "targets": [
             {
               "bucketAggs": [
@@ -3938,7 +3916,7 @@
               ],
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "count(container_last_seen{job=\"$job\",image=~\"(.)+\"})",
@@ -3967,6 +3945,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "",
           "fill": 1,
           "fillGradient": 0,
@@ -3998,7 +3980,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -4010,7 +3992,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(rate(container_cpu_usage_seconds_total{job=\"$job\", name=~\"$container\",name=~\".+\"}[5m])) by (name) *100",
@@ -4057,6 +4039,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "",
           "fill": 1,
           "fillGradient": 0,
@@ -4088,7 +4074,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -4100,7 +4086,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(container_memory_rss{job=\"$job\",name=~\"$container\",name=~\".+\"}) by (name)",
@@ -4147,6 +4133,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "",
           "fill": 1,
           "fillGradient": 0,
@@ -4176,7 +4166,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -4188,7 +4178,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(container_memory_cache{job=\"$job\",name=~\"$container\",name=~\".+\"}) by (name)",
@@ -4235,6 +4225,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "",
           "fill": 1,
           "fillGradient": 0,
@@ -4256,6 +4250,8 @@
             "min": false,
             "rightSide": true,
             "show": true,
+            "sort": "avg",
+            "sortDesc": true,
             "total": false,
             "values": true
           },
@@ -4266,7 +4262,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -4278,7 +4274,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(rate(container_network_receive_bytes_total{job=\"$job\",name=~\"$container\",name=~\".+\"}[5m])) by (name)",
@@ -4325,6 +4321,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "",
           "fill": 1,
           "fillGradient": 0,
@@ -4354,7 +4354,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -4366,7 +4366,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(rate(container_network_transmit_bytes_total{job=\"$job\",name=~\"$container\",name=~\".+\"}[5m])) by (name)",
@@ -4406,142 +4406,15 @@
           "yaxis": {
             "align": false
           }
-        },
+        }
+      ],
+      "targets": [
         {
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {
-                "align": "auto",
-                "displayMode": "auto",
-                "filterable": false
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "id"
-                },
-                "properties": [
-                  {
-                    "id": "custom.width",
-                    "value": 260
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Running"
-                },
-                "properties": [
-                  {
-                    "id": "unit",
-                    "value": "d"
-                  },
-                  {
-                    "id": "decimals",
-                    "value": 1
-                  },
-                  {
-                    "id": "custom.displayMode",
-                    "value": "color-text"
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "dark-green",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
           },
-          "gridPos": {
-            "h": 12,
-            "w": 24,
-            "x": 0,
-            "y": 24
-          },
-          "id": 137,
-          "options": {
-            "footer": {
-              "fields": "",
-              "reducer": [
-                "sum"
-              ],
-              "show": false
-            },
-            "showHeader": true,
-            "sortBy": []
-          },
-          "pluginVersion": "8.4.4",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "exemplar": false,
-              "expr": "(time() - container_start_time_seconds{job=\"$job\",name=~\"$container\",name=~\".+\"})/86400",
-              "format": "table",
-              "instant": true,
-              "interval": "",
-              "legendFormat": "{{name}}",
-              "refId": "A"
-            }
-          ],
-          "title": "Containers Info",
-          "transformations": [
-            {
-              "id": "filterFieldsByName",
-              "options": {
-                "include": {
-                  "names": [
-                    "container_label_com_docker_compose_project",
-                    "container_label_com_docker_compose_project_working_dir",
-                    "image",
-                    "instance",
-                    "name",
-                    "Value",
-                    "container_label_com_docker_compose_service"
-                  ]
-                }
-              }
-            },
-            {
-              "id": "organize",
-              "options": {
-                "excludeByName": {},
-                "indexByName": {},
-                "renameByName": {
-                  "Value": "Running",
-                  "container_label_com_docker_compose_project": "Label",
-                  "container_label_com_docker_compose_project_working_dir": "Working dir",
-                  "container_label_com_docker_compose_service": "Service",
-                  "image": "Registry Image",
-                  "instance": "Instance",
-                  "name": "Name"
-                }
-              }
-            }
-          ],
-          "type": "table"
+          "refId": "A"
         }
       ],
       "title": "Container Monitoring",
@@ -4549,6 +4422,10 @@
     },
     {
       "collapsed": true,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "nemsEc_4k"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -4562,6 +4439,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
           "description": "",
           "fill": 1,
           "fillGradient": 0,
@@ -4569,7 +4450,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 3
+            "y": 4
           },
           "hiddenSeries": false,
           "id": 6,
@@ -4589,7 +4470,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -4601,7 +4482,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(rate(event_dump_counter{job=\"$job\"}[30s]))by(stream_id)",
@@ -4650,7 +4531,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 1,
@@ -4659,7 +4540,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 3
+            "y": 4
           },
           "hiddenSeries": false,
           "id": 7,
@@ -4679,7 +4560,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -4691,7 +4572,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(rate(event_dump_counter{job=\"$job\"}[30s]))by(analytic_id)",
@@ -4738,7 +4619,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 1,
@@ -4747,7 +4628,7 @@
             "h": 8,
             "w": 6,
             "x": 0,
-            "y": 11
+            "y": 12
           },
           "hiddenSeries": false,
           "id": 23,
@@ -4767,7 +4648,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -4779,7 +4660,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "avg(pipeline_invoke_latency{quantile=\"0.500000\", job=\"$job\"})by(service_class_name)",
@@ -4828,7 +4709,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 1,
@@ -4837,7 +4718,7 @@
             "h": 8,
             "w": 6,
             "x": 6,
-            "y": 11
+            "y": 12
           },
           "hiddenSeries": false,
           "id": 22,
@@ -4857,7 +4738,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -4869,7 +4750,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "max(pipeline_invoke_latency{quantile=\"0.900000\",job=\"$job\"})by(service_class_name)",
@@ -4918,7 +4799,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 0,
@@ -4927,7 +4808,7 @@
             "h": 8,
             "w": 6,
             "x": 12,
-            "y": 11
+            "y": 12
           },
           "hiddenSeries": false,
           "id": 32,
@@ -4948,7 +4829,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -4960,7 +4841,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "avg_over_time(uncertainty_gauge{job=\"$job\"}[$err_range])",
@@ -5011,7 +4892,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 0,
@@ -5020,7 +4901,7 @@
             "h": 8,
             "w": 6,
             "x": 18,
-            "y": 11
+            "y": 12
           },
           "hiddenSeries": false,
           "id": 33,
@@ -5040,7 +4921,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -5052,7 +4933,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "(\n(\ncount_over_time((uncertainty_gauge{job=\"$job\"} > 0.6)[$err_range:100ms])\nOR \n(count_over_time(uncertainty_gauge{job=\"$job\"}[$err_range:100ms]) - count_over_time(uncertainty_gauge{job=\"$job\"}[$err_range:100ms]))\n)\n/\ncount_over_time(uncertainty_gauge{job=\"$job\"}[$err_range:100ms])\n)",
@@ -5103,7 +4984,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "fill": 1,
           "fillGradient": 0,
@@ -5111,7 +4992,7 @@
             "h": 7,
             "w": 6,
             "x": 0,
-            "y": 19
+            "y": 20
           },
           "hiddenSeries": false,
           "id": 4,
@@ -5131,7 +5012,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -5143,7 +5024,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "avg(pipeline_thread_load{quantile=\"0.500000\",job=\"$job\"})by(analytic_id)",
@@ -5190,7 +5071,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "fill": 1,
           "fillGradient": 0,
@@ -5198,7 +5079,7 @@
             "h": 7,
             "w": 6,
             "x": 6,
-            "y": 19
+            "y": 20
           },
           "hiddenSeries": false,
           "id": 27,
@@ -5218,7 +5099,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -5230,7 +5111,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "max(pipeline_thread_load{quantile=\"0.900000\",job=\"$job\"})by(analytic_id)",
@@ -5277,7 +5158,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "fill": 1,
           "fillGradient": 0,
@@ -5285,7 +5166,7 @@
             "h": 7,
             "w": 6,
             "x": 12,
-            "y": 19
+            "y": 20
           },
           "hiddenSeries": false,
           "id": 24,
@@ -5305,7 +5186,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -5317,7 +5198,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "avg(pipeline_latency{quantile=\"0.500000\",job=\"$job\"})by(analytic_id)",
@@ -5366,7 +5247,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "fill": 1,
           "fillGradient": 0,
@@ -5374,7 +5255,7 @@
             "h": 7,
             "w": 6,
             "x": 18,
-            "y": 19
+            "y": 20
           },
           "hiddenSeries": false,
           "id": 25,
@@ -5394,7 +5275,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.0",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -5406,7 +5287,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "max(pipeline_latency{quantile=\"0.900000\",job=\"$job\"})by(analytic_id)",
@@ -5455,7 +5336,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "fill": 1,
           "fillGradient": 0,
@@ -5463,7 +5344,7 @@
             "h": 8,
             "w": 5,
             "x": 0,
-            "y": 26
+            "y": 27
           },
           "hiddenSeries": false,
           "id": 12,
@@ -5483,7 +5364,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.6",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -5495,7 +5376,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "stream_fps{job=\"$job\"}",
@@ -5544,7 +5425,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "fill": 1,
           "fillGradient": 0,
@@ -5552,7 +5433,7 @@
             "h": 8,
             "w": 7,
             "x": 5,
-            "y": 26
+            "y": 27
           },
           "hiddenSeries": false,
           "id": 2,
@@ -5572,7 +5453,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.6",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -5584,7 +5465,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "event_dump_average_latency{quantile=\"0.500000\", job=\"$job\"}",
@@ -5596,7 +5477,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "event_dump_average_latency{quantile=\"0.900000\", job=\"$job\"}",
@@ -5608,7 +5489,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "event_dump_average_latency{quantile=\"0.990000\", job=\"$job\"}",
@@ -5655,7 +5536,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 1,
@@ -5664,7 +5545,7 @@
             "h": 8,
             "w": 6,
             "x": 12,
-            "y": 26
+            "y": 27
           },
           "hiddenSeries": false,
           "id": 10,
@@ -5684,7 +5565,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.6",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -5696,7 +5577,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "stream_thread_load{quantile=\"0.500000\",job=\"$job\"}",
@@ -5743,7 +5624,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 1,
@@ -5752,7 +5633,7 @@
             "h": 8,
             "w": 6,
             "x": 18,
-            "y": 26
+            "y": 27
           },
           "hiddenSeries": false,
           "id": 8,
@@ -5772,7 +5653,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "9.3.6",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -5784,7 +5665,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "stream_thread_load{quantile=\"0.900000\", job=\"$job\"}",
@@ -5831,7 +5712,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 1,
@@ -5840,7 +5721,7 @@
             "h": 8,
             "w": 7,
             "x": 0,
-            "y": 34
+            "y": 35
           },
           "hiddenSeries": false,
           "id": 19,
@@ -5860,7 +5741,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "8.4.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -5872,7 +5753,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "avg(mjpeg_connection_number{job=\"$job\"})by(stream_id)",
@@ -5919,7 +5800,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 1,
@@ -5928,7 +5809,7 @@
             "h": 8,
             "w": 8,
             "x": 7,
-            "y": 34
+            "y": 35
           },
           "hiddenSeries": false,
           "id": 20,
@@ -5948,7 +5829,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "8.4.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -5960,7 +5841,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "avg(mjpeg_encode_latency{quantile=\"0.500000\", job=\"$job\"}) by (stream_id)",
@@ -6007,7 +5888,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 1,
@@ -6016,7 +5897,7 @@
             "h": 8,
             "w": 9,
             "x": 15,
-            "y": 34
+            "y": 35
           },
           "hiddenSeries": false,
           "id": 21,
@@ -6036,7 +5917,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "8.4.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -6048,7 +5929,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "max(mjpeg_encode_latency{quantile=\"0.900000\",job=\"$job\"}) by (stream_id)",
@@ -6095,7 +5976,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 1,
@@ -6104,7 +5985,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 42
+            "y": 43
           },
           "hiddenSeries": false,
           "id": 17,
@@ -6124,7 +6005,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "8.4.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -6136,7 +6017,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "avg(rate(mjpeg_frame_counter{job=\"$job\"}[1m])/mjpeg_connection_number{job=\"$job\"})by(stream_id)",
@@ -6183,7 +6064,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "fill": 1,
           "fillGradient": 0,
@@ -6191,7 +6072,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 42
+            "y": 43
           },
           "hiddenSeries": false,
           "id": 18,
@@ -6211,7 +6092,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "8.4.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -6223,7 +6104,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "avg(rate(mjpeg_frame_size_counter{job=\"$job\"}[1m]))by(stream_id)*8",
@@ -6270,7 +6151,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 1,
@@ -6279,7 +6160,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 50
+            "y": 51
           },
           "hiddenSeries": false,
           "id": 14,
@@ -6299,7 +6180,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "8.4.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -6311,7 +6192,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(pipeline_object_number{job=\"$job\"})by(analytic_id)",
@@ -6323,7 +6204,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(stream_object_number{job=\"$job\"})by(node_num)",
@@ -6335,7 +6216,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(service_object_number{job=\"$job\"})by(service_class_name)",
@@ -6382,7 +6263,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 1,
@@ -6391,7 +6272,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 50
+            "y": 51
           },
           "hiddenSeries": false,
           "id": 15,
@@ -6411,7 +6292,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "8.4.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -6423,7 +6304,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(rate(pipeline_restarted_counter{job=\"$job\"}[15m]))by(analytic_id)",
@@ -6435,7 +6316,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(rate(stream_restarted_counter{job=\"$job\"}[15m]))",
@@ -6447,7 +6328,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(rate(service_restarted_counter{job=\"$job\"}[15m]))by(service_class_name)",
@@ -6494,7 +6375,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "nemsEc_4k"
           },
           "description": "",
           "fill": 1,
@@ -6503,7 +6384,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 58
+            "y": 59
           },
           "hiddenSeries": false,
           "id": 16,
@@ -6523,7 +6404,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "8.4.4",
+          "pluginVersion": "8.4.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -6535,7 +6416,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(pipeline_thread_number{job=\"$job\"})by(analytic_id)",
@@ -6547,7 +6428,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(stream_thread_number{job=\"$job\"})",
@@ -6559,7 +6440,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "nemsEc_4k"
               },
               "exemplar": true,
               "expr": "sum(service_thread_number{job=\"$job\"})by(service_class_name)",
@@ -6600,16 +6481,48 @@
           }
         }
       ],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "nemsEc_4k"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Visionaire4",
       "type": "row"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 35,
+  "refresh": "10s",
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "server LB",
+          "value": "server LB"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "host ",
+        "multi": false,
+        "name": "job",
+        "options": [
+          {
+            "selected": true,
+            "text": "server LB",
+            "value": "server LB"
+          }
+        ],
+        "query": "server LB",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
       {
         "auto": false,
         "auto_count": 30,
@@ -6677,72 +6590,19 @@
         "type": "interval"
       },
       {
-        "current": {
-          "selected": false,
-          "text": "visionaire4",
-          "value": "visionaire4"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
-        },
-        "definition": "label_values(event_dump_connection_number, job)",
-        "hide": 0,
-        "includeAll": false,
-        "label": "host ",
-        "multi": false,
-        "name": "job",
-        "options": [],
-        "query": {
-          "query": "label_values(event_dump_connection_number, job)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 1,
-        "type": "query"
-      },
-      {
         "allValue": ".*",
         "current": {
           "selected": true,
           "text": [
-            "nvidia_smi_exporter",
-            "portainer",
-            "caddy",
-            "cadvisor",
-            "redis",
-            "grafana",
-            "nodeexporter",
-            "prometheus",
-            "visionaire4",
-            "fremisn",
-            "postgresdb",
-            "naughty_diffie",
-            "komune_dashboard",
-            "uptime-kuma",
-            "vanilla-dashboard",
-            "komune_backend"
+            "nginx-loadbalancer-1to1"
           ],
           "value": [
-            "nvidia_smi_exporter",
-            "portainer",
-            "caddy",
-            "cadvisor",
-            "redis",
-            "grafana",
-            "nodeexporter",
-            "prometheus",
-            "visionaire4",
-            "fremisn",
-            "postgresdb",
-            "naughty_diffie",
-            "komune_dashboard",
-            "uptime-kuma",
-            "vanilla-dashboard",
-            "komune_backend"
+            "nginx-loadbalancer-1to1"
           ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "nemsEc_4k"
         },
         "definition": "label_values({__name__=~\"container.*\", job=\"$job\"},name)",
         "hide": 0,
@@ -6763,15 +6623,20 @@
       },
       {
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "92281e21-d56e-4a0c-7d7d-03019c2d5361",
-          "value": "92281e21-d56e-4a0c-7d7d-03019c2d5361"
+          "text": "None",
+          "value": ""
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "nemsEc_4k"
         },
         "definition": "label_values(nvidia_smi_index{job=\"$job\"}, uuid)",
         "hide": 0,
         "includeAll": false,
         "label": "GPU",
-        "multi": true,
+        "multi": false,
         "name": "gpu",
         "options": [],
         "query": {
@@ -6787,13 +6652,26 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-12h",
     "to": "now"
   },
-  "timepicker": {},
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
   "timezone": "",
   "title": "Visionaire 4 centralized monitoring",
-  "uid": "-GV0BihGk",
-  "version": 50,
+  "uid": "-GV0BihGk-v4-cent",
+  "version": 2,
   "weekStart": ""
 }
